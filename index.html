@@ -3,482 +3,248 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
 <title>rajshaw.eth</title>
 
 <style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Inter,system-ui,sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
 
 body{
   min-height:100vh;
-
-  background:
-  radial-gradient(circle at top left, rgba(124,58,237,.35), transparent 30%),
-  radial-gradient(circle at top right, rgba(6,182,212,.25), transparent 25%),
-  #070b14;
-
+  background:radial-gradient(circle at top left,rgba(124,58,237,.35),transparent 30%),
+  radial-gradient(circle at top right,rgba(6,182,212,.25),transparent 25%),#070b14;
   color:white;
-
   overflow-x:hidden;
-
   padding-bottom:110px;
 }
 
-/* HEADER */
-
 header{
-  position:sticky;
-  top:0;
-
-  width:100%;
-
-  padding:20px 7%;
-
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-
-  z-index:1000;
-
-  background:rgba(7,11,20,.75);
-
-  backdrop-filter:blur(16px);
-
-  border-bottom:1px solid rgba(255,255,255,.08);
+  position:sticky;top:0;width:100%;padding:20px 7%;
+  display:flex;align-items:center;justify-content:flex-start;
+  z-index:1000;background:rgba(7,11,20,.75);
+  backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)
 }
 
-.logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
+.logo{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:800}
+.logo img{width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2)}
 
-  font-size:18px;
-  font-weight:800;
-}
+main{width:min(1100px,92%);margin:auto;padding:70px 0}
 
-.logo img{
-  width:50px;
-  height:50px;
-
-  border-radius:50%;
-
-  object-fit:cover;
-
-  border:2px solid rgba(255,255,255,.2);
-}
-
-/* MAIN */
-
-main{
-  width:min(1100px,92%);
-  margin:auto;
-
-  padding:70px 0;
-}
-
-/* HERO */
-
-.hero{
-  display:grid;
-
-  grid-template-columns:1.2fr .8fr;
-
-  gap:25px;
-}
-
-/* CARDS */
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:25px}
+.grid{margin-top:25px;display:grid;grid-template-columns:1fr 1fr;gap:25px}
 
 .card{
   background:rgba(255,255,255,.06);
-
   border:1px solid rgba(255,255,255,.1);
-
   border-radius:28px;
-
   padding:30px;
-
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px)
 }
 
-.label{
-  color:#94a3b8;
-
-  font-size:13px;
-
-  text-transform:uppercase;
-
-  letter-spacing:1px;
-
-  margin-bottom:10px;
-}
+.label{color:#94a3b8;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
 
 h1{
   font-size:clamp(50px,8vw,90px);
-
-  line-height:.95;
-
-  margin-bottom:18px;
-
-  background:linear-gradient(135deg,#06b6d4,#ffffff,#7c3aed);
-
-  -webkit-background-clip:text;
-
-  color:transparent;
+  line-height:.95;margin-bottom:18px;
+  background:linear-gradient(135deg,#06b6d4,#fff,#7c3aed);
+  -webkit-background-clip:text;color:transparent
 }
 
-p{
-  color:#94a3b8;
-
-  line-height:1.8;
-
-  font-size:17px;
-}
+h2{font-size:28px;margin-bottom:16px}
+p{color:#94a3b8;line-height:1.8;font-size:17px}
 
 .wallet{
-  margin-top:24px;
-
-  padding:16px;
-
-  border-radius:18px;
-
+  margin-top:24px;padding:16px;border-radius:18px;
   background:rgba(255,255,255,.05);
-
   border:1px solid rgba(255,255,255,.08);
-
-  word-break:break-all;
-
-  font-family:monospace;
-
-  color:#dbeafe;
+  word-break:break-all;font-family:monospace;color:#dbeafe
 }
 
-.value{
-  font-size:34px;
+.value{font-size:34px;font-weight:800}
 
-  font-weight:800;
-}
-
-/* GRID */
-
-.grid{
-  margin-top:25px;
-
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-
-  gap:25px;
-}
-
-.section-title{
-  font-size:28px;
-
-  margin-bottom:16px;
-}
-
-.mini{
-  display:grid;
-
-  gap:14px;
-
-  margin-top:18px;
-}
-
+.mini{display:grid;gap:14px;margin-top:18px}
 .mini-box{
   background:rgba(255,255,255,.04);
-
   border:1px solid rgba(255,255,255,.08);
-
-  border-radius:18px;
-
-  padding:16px;
+  border-radius:18px;padding:16px
 }
 
-/* FOOTER */
+.evm-section{margin-top:25px}
+.evm-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:18px
+}
+
+.chain-card{
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;
+  padding:18px
+}
+
+.chain-name{font-size:15px;color:#94a3b8;margin-bottom:8px}
+.chain-balance{font-size:24px;font-weight:800}
 
 footer{
-  position:fixed;
-
-  left:0;
-  bottom:0;
-
-  width:100%;
-
-  z-index:99999;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  padding:16px;
-
-  background:rgba(7,11,20,.92);
-
-  backdrop-filter:blur(18px);
-
-  border-top:1px solid rgba(255,255,255,.08);
+  position:fixed;left:0;bottom:0;width:100%;z-index:99999;
+  display:flex;justify-content:center;align-items:center;
+  padding:16px;background:rgba(7,11,20,.92);
+  backdrop-filter:blur(18px);border-top:1px solid rgba(255,255,255,.08)
 }
 
-/* SOCIALS */
-
-.socials{
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  gap:16px;
-}
-
+.socials{display:flex;align-items:center;justify-content:center;gap:16px}
 .socials a{
-  width:48px;
-  height:48px;
-
-  border-radius:50%;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
   background:rgba(255,255,255,.06);
-
   border:1px solid rgba(255,255,255,.08);
-
-  color:white;
-
-  transition:.2s;
+  color:white;transition:.2s
 }
 
-.socials a:hover{
-  transform:translateY(-4px);
-
-  background:rgba(255,255,255,.12);
-}
-
-.socials svg{
-  width:23px;
-  height:23px;
-}
-
-/* RESPONSIVE */
+.socials a:hover{transform:translateY(-4px);background:rgba(255,255,255,.12)}
+.socials svg{width:23px;height:23px}
 
 @media(max-width:850px){
-
-  .hero,
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  main{
-    padding-top:40px;
-  }
-
+  .hero,.grid,.evm-grid{grid-template-columns:1fr}
+  main{padding-top:40px}
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-
   <div class="logo">
-
-    <!-- CHANGE THIS IMAGE ANYTIME -->
-
     <img src="logo.png" alt="logo">
-
     <span>rajshaw.eth</span>
-
   </div>
-
 </header>
 
 <main>
 
-<!-- HERO -->
-
 <section class="hero">
-
   <div class="card">
-
-    <div class="label">
-      ENS Identity
-    </div>
-
-    <h1>
-      rajshaw.eth
-    </h1>
-
+    <div class="label">ENS Identity</div>
+    <h1>rajshaw.eth</h1>
     <p>
-      Welcome to my onchain identity hub.
-      This website displays my Ethereum wallet,
+      Welcome to my onchain identity hub. This website displays my Ethereum wallet,
       live balance, wallet history and social links.
     </p>
-
-    <div class="wallet">
-      0x1e94ABfa1e66A80A4194a381a06197Ed5287Ca81
-    </div>
-
+    <div class="wallet">0x1e94ABfa1e66A80A4194a381a06197Ed5287Ca81</div>
   </div>
 
   <div class="card">
-
-    <div class="label">
-      Live Wallet Balance
-    </div>
-
-    <div class="value" id="balance">
-      Loading...
-    </div>
-
+    <div class="label">Ethereum Live Balance</div>
+    <div class="value" id="balance">Loading...</div>
     <br>
-
-    <p>
-      Real-time ETH balance fetched directly from Ethereum.
-    </p>
-
+    <p>Real-time ETH balance fetched directly from Ethereum.</p>
   </div>
-
 </section>
 
-<!-- ABOUT + WALLET AGE -->
-
 <section class="grid">
-
   <div class="card" id="about">
-
-    <h2 class="section-title">
-      About
-    </h2>
-
+    <h2>About</h2>
     <p>
       I’m building my digital identity around rajshaw.eth.
-      This page acts as my decentralized profile where anyone
-      can verify my wallet, view my onchain presence and connect
-      with me across Web3 social platforms.
+      This page acts as my decentralized profile where anyone can verify my wallet,
+      view my onchain presence and connect with me across Web3 social platforms.
     </p>
-
   </div>
 
   <div class="card">
-
-    <h2 class="section-title">
-      Wallet Age
-    </h2>
-
+    <h2>Wallet Age</h2>
     <div class="mini">
-
       <div class="mini-box">
-
-        <div class="label">
-          First Transaction
-        </div>
-
-        <div class="value" id="firstTxn">
-          Loading...
-        </div>
-
+        <div class="label">First Transaction</div>
+        <div class="value" id="firstTxn">Loading...</div>
       </div>
-
       <div class="mini-box">
-
-        <div class="label">
-          Wallet Age
-        </div>
-
-        <div class="value" id="walletAge">
-          Loading...
-        </div>
-
+        <div class="label">Wallet Age</div>
+        <div class="value" id="walletAge">Loading...</div>
       </div>
-
     </div>
-
   </div>
+</section>
 
+<section class="card evm-section">
+  <h2>EVM Network Balances</h2>
+  <p>Visitors can check this wallet’s native coin balance across popular EVM chains.</p>
+
+  <div class="evm-grid">
+    <div class="chain-card"><div class="chain-name">Ethereum</div><div class="chain-balance" id="ethBalance">Loading...</div></div>
+    <div class="chain-card"><div class="chain-name">Polygon</div><div class="chain-balance" id="polygonBalance">Loading...</div></div>
+    <div class="chain-card"><div class="chain-name">BNB Chain</div><div class="chain-balance" id="bnbBalance">Loading...</div></div>
+    <div class="chain-card"><div class="chain-name">Arbitrum</div><div class="chain-balance" id="arbBalance">Loading...</div></div>
+    <div class="chain-card"><div class="chain-name">Optimism</div><div class="chain-balance" id="opBalance">Loading...</div></div>
+    <div class="chain-card"><div class="chain-name">Base</div><div class="chain-balance" id="baseBalance">Loading...</div></div>
+    <div class="chain-card"><div class="chain-name">Avalanche</div><div class="chain-balance" id="avaxBalance">Loading...</div></div>
+  </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
-
 <footer>
-
 <div class="socials">
 
-<!-- X -->
-
-<a href="https://x.com/iphunewale" target="_blank">
-
+<a href="https://x.com/rajshaw" target="_blank" aria-label="X">
 <svg viewBox="0 0 24 24" fill="currentColor">
 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/>
 </svg>
-
 </a>
 
-<!-- INSTAGRAM -->
-
-<a href="https://instagram.com/rajshaw.eth" target="_blank">
-
+<a href="https://instagram.com/rajshaw" target="_blank" aria-label="Instagram">
 <svg viewBox="0 0 24 24" fill="currentColor">
 <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-3.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/>
 </svg>
-
 </a>
 
-<!-- FARCASTER -->
-
-<a href="https://farcaster.xyz/rohanshaw" target="_blank">
-
+<a href="https://warpcast.com/rajshaw" target="_blank" aria-label="Farcaster">
 <svg viewBox="0 0 24 24" fill="currentColor">
 <path d="M4 3h16v18h-2.8v-7.2h-.03c-.31-3.43-2.47-5.52-5.17-5.52s-4.86 2.09-5.17 5.52H6.8V21H4V3Zm4.9 0h6.2v3.1H8.9V3Zm8.1 0h3v3.1h-3V3Zm-5 7.6c-1.69 0-3.05 1.55-3.05 3.46V21h6.1v-6.94c0-1.91-1.36-3.46-3.05-3.46Z"/>
 </svg>
-
 </a>
 
-<!-- TELEGRAM -->
-
-<a href="https://t.me/Raj_shaw999" target="_blank">
-
+<a href="https://t.me/rajshaw" target="_blank" aria-label="Telegram">
 <svg viewBox="0 0 24 24" fill="currentColor">
 <path d="M9.993 15.674 9.6 21.196c.563 0 .807-.242 1.1-.532l2.64-2.523 5.47 4.006c1.003.552 1.713.262 1.984-.924L24.39 4.39c.36-1.68-.607-2.337-1.584-1.974L1.672 10.514c-1.442.563-1.42 1.372-.245 1.737l5.405 1.684L19.386 6.08c.59-.39 1.127-.174.685.216L9.993 15.674Z"/>
 </svg>
-
 </a>
 
 </div>
-
 </footer>
 
 <script>
-
-const walletAddress =
-"0x1e94ABfa1e66A80A4194a381a06197Ed5287Ca81";
+const walletAddress = "0x1e94ABfa1e66A80A4194a381a06197Ed5287Ca81";
 
 const rpc =
 "https://eth-mainnet.g.alchemy.com/public";
 
-const etherscanKey =
-"6HBSCSW94ZNJIVQ1NVF1DF8ZVGEMJKVTTR";
+const etherscanKey = "6HBSCSW94ZNJIVQ1NVF1DF8ZVGEMJKVTTR";
 
-/* LIVE BALANCE */
+const networks = [
+  { name:"Ethereum", symbol:"ETH", rpc:"https://cloudflare-eth.com", id:"ethBalance" },
+  { name:"Polygon", symbol:"MATIC", rpc:"https://polygon-rpc.com", id:"polygonBalance" },
+  { name:"BNB Chain", symbol:"BNB", rpc:"https://bsc-dataseed.binance.org", id:"bnbBalance" },
+  { name:"Arbitrum", symbol:"ETH", rpc:"https://arb1.arbitrum.io/rpc", id:"arbBalance" },
+  { name:"Optimism", symbol:"ETH", rpc:"https://mainnet.optimism.io", id:"opBalance" },
+  { name:"Base", symbol:"ETH", rpc:"https://mainnet.base.org", id:"baseBalance" },
+  { name:"Avalanche", symbol:"AVAX", rpc:"https://api.avax.network/ext/bc/C/rpc", id:"avaxBalance" }
+];
 
-async function getBalance(){
+function formatWei(hexWei){
+  const wei = BigInt(hexWei);
+  const whole = wei / 1000000000000000000n;
+  const fraction = wei % 1000000000000000000n;
+  const fractionText = fraction.toString().padStart(18,"0").slice(0,5);
+  return `${whole}.${fractionText}`;
+}
 
+async function getNativeBalance(network){
   try{
-
-    const response = await fetch(rpc,{
+    const response = await fetch(network.rpc,{
       method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
+      headers:{ "Content-Type":"application/json" },
       body:JSON.stringify({
         jsonrpc:"2.0",
         method:"eth_getBalance",
@@ -487,59 +253,48 @@ async function getBalance(){
       })
     });
 
-    const data =
-    await response.json();
+    const data = await response.json();
 
-    const wei =
-    BigInt(data.result);
+    if(!data.result){
+      throw new Error("No balance returned");
+    }
 
-    const eth =
-    Number(wei) / 1e18;
+    const balance = formatWei(data.result);
+    document.getElementById(network.id).innerText = `${balance} ${network.symbol}`;
 
-    document.getElementById("balance")
-    .innerText =
-    eth.toFixed(5) + " ETH";
+    if(network.name === "Ethereum"){
+      document.getElementById("balance").innerText = `${balance} ETH`;
+    }
 
-  }catch(err){
+  }catch(error){
+    document.getElementById(network.id).innerText = "Unavailable";
 
-    document.getElementById("balance")
-    .innerText =
-    "Unavailable";
-
+    if(network.name === "Ethereum"){
+      document.getElementById("balance").innerText = "Unavailable";
+    }
   }
-
 }
 
-/* WALLET AGE */
+async function loadAllBalances(){
+  networks.forEach(network => getNativeBalance(network));
+}
 
 async function getWalletAge(){
-
   try{
-
     const url =
 `https://api.etherscan.io/v2/api?chainid=1&module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&page=1&offset=1&sort=asc&apikey=${etherscanKey}`;
 
     const response = await fetch(url);
     const data = await response.json();
 
-    if(
-      data.status !== "1" ||
-      !Array.isArray(data.result) ||
-      data.result.length === 0
-    ){
-      throw new Error(data.result || "No transaction found");
+    if(data.status !== "1" || !Array.isArray(data.result) || data.result.length === 0){
+      throw new Error("No transaction found");
     }
 
     const tx = data.result[0];
-
-    if(!tx.timeStamp){
-      throw new Error("Timestamp not found");
-    }
-
     const date = new Date(Number(tx.timeStamp) * 1000);
 
-    document.getElementById("firstTxn").innerText =
-      date.toLocaleDateString();
+    document.getElementById("firstTxn").innerText = date.toLocaleDateString();
 
     const now = new Date();
     const diff = now - date;
@@ -547,27 +302,18 @@ async function getWalletAge(){
     const years = Math.floor(days / 365);
     const remaining = days % 365;
 
-    document.getElementById("walletAge").innerText =
-      years + "y " + remaining + "d";
+    document.getElementById("walletAge").innerText = `${years}y ${remaining}d`;
 
-  }catch(err){
-
-    document.getElementById("firstTxn").innerText =
-      "Unable to load";
-
-    document.getElementById("walletAge").innerText =
-      "Check API key";
-
-    console.log(err);
-
+  }catch(error){
+    document.getElementById("firstTxn").innerText = "Unable to load";
+    document.getElementById("walletAge").innerText = "Check API key";
   }
-
 }
 
-getBalance();
+loadAllBalances();
 getWalletAge();
-
 </script>
 
 </body>
 </html>
+```
