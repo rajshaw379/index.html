@@ -517,52 +517,48 @@ async function getWalletAge(){
   try{
 
     const url =
-`https://api.etherscan.io/api?module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&page=1&offset=1&sort=asc&apikey=${etherscanKey}`;
+`https://api.etherscan.io/v2/api?chainid=1&module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&page=1&offset=1&sort=asc&apikey=${etherscanKey}`;
 
-    const response =
-    await fetch(url);
+    const response = await fetch(url);
+    const data = await response.json();
 
-    const data =
-    await response.json();
+    if(
+      data.status !== "1" ||
+      !Array.isArray(data.result) ||
+      data.result.length === 0
+    ){
+      throw new Error(data.result || "No transaction found");
+    }
 
-    const tx =
-    data.result[0];
+    const tx = data.result[0];
 
-    const date =
-    new Date(tx.timeStamp * 1000);
+    if(!tx.timeStamp){
+      throw new Error("Timestamp not found");
+    }
 
-    document.getElementById("firstTxn")
-    .innerText =
-    date.toLocaleDateString();
+    const date = new Date(Number(tx.timeStamp) * 1000);
 
-    const now =
-    new Date();
+    document.getElementById("firstTxn").innerText =
+      date.toLocaleDateString();
 
-    const diff =
-    now - date;
+    const now = new Date();
+    const diff = now - date;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const years = Math.floor(days / 365);
+    const remaining = days % 365;
 
-    const days =
-    Math.floor(diff / (1000 * 60 * 60 * 24));
-
-    const years =
-    Math.floor(days / 365);
-
-    const remaining =
-    days % 365;
-
-    document.getElementById("walletAge")
-    .innerText =
-    years + "y " + remaining + "d";
+    document.getElementById("walletAge").innerText =
+      years + "y " + remaining + "d";
 
   }catch(err){
 
-    document.getElementById("firstTxn")
-    .innerText =
-    "Unavailable";
+    document.getElementById("firstTxn").innerText =
+      "Unable to load";
 
-    document.getElementById("walletAge")
-    .innerText =
-    "Unavailable";
+    document.getElementById("walletAge").innerText =
+      "Check API key";
+
+    console.log(err);
 
   }
 
